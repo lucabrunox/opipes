@@ -40,13 +40,13 @@ Instead by prefixing all the commands in the pipeline with `o`, opipes will auto
 
 ```shell
 # Before
-aws logs filter-log-events --no-cli-pager \
+aws logs filter-log-events \
   --log-group-name test-log1 --log-stream-name-prefix test \
   | grep ERROR \
   | grep myapp
 
 # After
-o aws logs filter-log-events --no-cli-pager \
+o aws logs filter-log-events \
   --log-group-name test-log1 --log-stream-name-prefix test \
   --filter-pattern {awsLogFilter} \
   | o grep ERROR \
@@ -56,7 +56,7 @@ o aws logs filter-log-events --no-cli-pager \
 In debug mode it will show that `{awsLogFilter}` is being replaced with `"ERROR myapp"`:
 
 ```shell
-time=2025-08-28T23:37:38.875+02:00 level=DEBUG msg="starting command" program=aws pid=2849760 args="[aws logs filter-log-events --no-cli-pager --log-group-name test-log1 --log-stream-name-prefix test --filter-pattern  ERROR myapp]"
+time=2025-08-29T17:59:04.336+02:00 level=DEBUG msg="starting command" program=aws pid=1124819 args="[aws logs filter-log-events --log-group-name test-log1 --log-stream-name-prefix test --filter-pattern  ERROR myapp]"
 ```
 
 Only basic grep filters with one string are supported at the moment. To know whether `o` is able to push-down the filters up to the source enable the debug mode with `export OLOGLEVEL=debug`.
