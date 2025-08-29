@@ -1,9 +1,6 @@
 # OPipes - Higher order pipes
 
-OPipes is a command wrapper (`o`) to be used in shell scripts that is able to:
-- Push-down filters to the source of the stream
-- WIP: Simplify the parallelization of command pipelines 
-- WIP: Simplify the parallelization of for loops
+OPipes is a command wrapper (`o`) that can take a bash pipeline used to filter local logs and make it work for any cloud provider without needing to change the pipeline, such that the logs are filtered in the cloud first instead of downloaded all locally... and does so without quoting the pipeline!
 
 To install:
 
@@ -17,9 +14,7 @@ To enable debug mode:
 export OLOGLEVEL=debug
 ```
 
-### Use case 1: filter AWS logs without using the AWS filter language
-
-> This example is to prove that with minimal wrapping it's possible to translate a e.g. bash pipeline to filter logs into a filter in the cloud provider specific language. Now if only cloud providers supported the actual grep or sed syntax...
+### Example with AWS Logs
 
 Set up a log group with some test logs (skip this if you already have logs to work with):
 
