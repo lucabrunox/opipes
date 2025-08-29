@@ -19,6 +19,8 @@ export OLOGLEVEL=debug
 
 ### Use case 1: filter AWS logs without using the AWS filter language
 
+> This example is to prove that with minimal wrapping it's possible to translate a e.g. bash pipeline to filter logs into a filter in the cloud provider specific language. Now if only cloud providers supported the actual grep or sed syntax...
+
 Set up a log group with some test logs (skip this if you already have logs to work with):
 
 ```shell
